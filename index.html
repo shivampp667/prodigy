@@ -2,33 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProDigy Infotech Task-01</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stopwatch - Task 02</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation Menu -->
-  <nav id="navbar">
-    <div class="logo">Pro<span>Digy</span></div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#task">Task-01</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Pro<span>Digy</span> Infotech</div>
+    <div class="task">Task-02: Stopwatch Web App</div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <h1>Welcome to ProDigy Infotech</h1>
-    <p>Task-01: Responsive Landing Page</p>
-  </section>
-
-  <!-- Blue Gradient Square -->
-  <section class="shape-section">
-    <div class="blue-square"></div>
-    <div class="gradient-circle"></div>
-  </section>
+  <!-- Stopwatch Container -->
+  <div class="container">
+    <div class="circle"></div>
+    <div class="half-circle"></div>
+    <h1>Stopwatch</h1>
+    <p id="display">00:00:00</p>
+    <div class="buttons">
+      <button onclick="startStop()">Start</button>
+      <button onclick="reset()">Reset</button>
+      <button onclick="recordLap()">Lap</button>
+    </div>
+    <ul id="laps"></ul>
+  </div>
 
   <script src="script.js"></script>
 </body>
