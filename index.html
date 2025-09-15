@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stopwatch - Task 02</title>
+  <title>Weather App | Task-05</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">Pro<span>Digy</span> Infotech</div>
-    <div class="task">Task-02: Stopwatch Web App</div>
-  </nav>
+  <!-- Decorative Shapes -->
+  <div class="blue-square top-left"></div>
+  <div class="circle-gradient top-right"></div>
+  <div class="blue-square bottom-left"></div>
 
-  <!-- Stopwatch Container -->
-  <div class="container">
-    <div class="circle"></div>
-    <div class="half-circle"></div>
-    <h1>Stopwatch</h1>
-    <p id="display">00:00:00</p>
-    <div class="buttons">
-      <button onclick="startStop()">Start</button>
-      <button onclick="reset()">Reset</button>
-      <button onclick="recordLap()">Lap</button>
-    </div>
-    <ul id="laps"></ul>
+  <!-- App Title -->
+  <header>
+    <h1>🌦 Weather App</h1>
+    <p>Weather-Forecast</p>
+  </header>
+
+  <!-- Weather Search Section -->
+  <div class="weather-container">
+    <input type="text" id="cityInput" placeholder="Enter city name..." />
+    <button onclick="getWeather()">Search</button>
+    <button onclick="getLocationWeather()">📍 Use My Location</button>
+
+    <div class="weather-result" id="weatherResult"></div>
   </div>
 
   <script src="script.js"></script>
