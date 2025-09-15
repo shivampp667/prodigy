@@ -1,0 +1,127 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  color: #333;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to right, #007BFF, #00C6FF);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  z-index: 1000;
+  transition: 0.3s ease;
+}
+
+nav.scrolled {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.logo span {
+  color: yellow;
+}
+
+nav.scrolled .logo {
+  color: #007BFF;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav.scrolled ul li a {
+  color: #007BFF;
+}
+
+nav ul li a:hover {
+  color: yellow;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e3f2fd;
+  text-align: center;
+  padding: 100px 20px 0;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #666;
+}
+
+/* Gradient Shape Section */
+.shape-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 50px;
+}
+
+.blue-square {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to bottom right, #2196F3, #03A9F4);
+  border-radius: 10px;
+}
+
+.gradient-circle {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #00C6FF, #007BFF);
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
