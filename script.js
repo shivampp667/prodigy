@@ -1,54 +1,44 @@
-let [hours, minutes, seconds] = [0, 0, 0];
-let display = document.getElementById("display");
-let interval = null;
-let isRunning = false;
+const apiKey = "f469ae35eafe861fc462644aa5f88381"; 
 
-function updateDisplay() {
-  let h = hours < 10 ? "0" + hours : hours;
-  let m = minutes < 10 ? "0" + minutes : minutes;
-  let s = seconds < 10 ? "0" + seconds : seconds;
-  display.textContent = `${h}:${m}:${s}`;
+function getWeather() {
+  const city = document.getElementById("cityInput").value;
+  if (!city) return alert("Please enter a city name");
+  fetchWeatherData(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
 }
 
-function timer() {
-  seconds++;
-  if (seconds === 60) {
-    seconds = 0;
-    minutes++;
-  }
-  if (minutes === 60) {
-    minutes = 0;
-    hours++;
-  }
-  updateDisplay();
-}
-
-function startStop() {
-  if (!isRunning) {
-    interval = setInterval(timer, 1000);
-    isRunning = true;
-    document.querySelector("button").textContent = "Pause";
+function getLocationWeather() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      fetchWeatherData(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
+    });
   } else {
-    clearInterval(interval);
-    isRunning = false;
-    document.querySelector("button").textContent = "Start";
+    alert("Geolocation is not supported by your browser.");
   }
 }
 
-function reset() {
-  clearInterval(interval);
-  [hours, minutes, seconds] = [0, 0, 0];
-  updateDisplay();
-  isRunning = false;
-  document.querySelector("button").textContent = "Start";
-  document.getElementById("laps").innerHTML = "";
+function fetchWeatherData(url) {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => showWeather(data))
+    .catch(() => {
+      document.getElementById("weatherResult").innerHTML = `<p>❌ Could not fetch weather data.</p>`;
+    });
 }
 
-function recordLap() {
-  if (isRunning) {
-    const lapTime = display.textContent;
-    const li = document.createElement("li");
-    li.textContent = `Lap - ${lapTime}`;
-    document.getElementById("laps").appendChild(li);
+function showWeather(data) {
+  if (data.cod !== 200) {
+    document.getElementById("weatherResult").innerHTML = `<p>❌ ${data.message}</p>`;
+    return;
   }
+
+  const html = `
+    <h2>${data.name}, ${data.sys.country}</h2>
+    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />
+    <p><strong>${data.weather[0].description}</strong></p>
+    <p>🌡 Temp: ${data.main.temp}°C</p>
+    <p>💧 Humidity: ${data.main.humidity}%</p>
+    <p>💨 Wind: ${data.wind.speed} m/s</p>
+  `;
+  document.getElementById("weatherResult").innerHTML = html;
 }
