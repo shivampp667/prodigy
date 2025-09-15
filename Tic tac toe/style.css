@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  color: #333;
+  text-align: center;
+}
+
+/* Navigation Bar */
+nav {
+  background: linear-gradient(to right, #007BFF, #00C6FF);
+  padding: 15px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo span {
+  color: yellow;
+}
+
+/* Game Section */
+.game-section {
+  margin-top: 60px;
+  position: relative;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+.status {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #444;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  border: 2px solid #007BFF;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cell:hover {
+  background: #e3f2fd;
+}
+
+#restartBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#restartBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Gradient Circles */
+.circle {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #00C6FF, #007BFF);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: -1;
+}
+
+.circle2 {
+  top: 20px;
+  right: 20px;
+  left: auto;
+}
+
+.fading-gradient {
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0, 123, 255, 0.3), transparent);
+  position: absolute;
+  top: 0;
+  z-index: -2;
+}
